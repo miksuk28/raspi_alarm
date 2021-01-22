@@ -5,7 +5,7 @@ class Day:
         self.alarm_minute = alarm_minute
         self.offset = self.sub_time(self, offset_minute)
 
-    def sub_time(self, sub_minute):
+    def sub_time(self, offset_minute):
         new_hour = self.alarm_hour
         if (self.alarm_minute - self.offset) < 0:
             new_hour -= (self.offset // 60)
