@@ -3,13 +3,20 @@ class Day:
         self.day = day
         self.alarm_hour = alarm_hour
         self.alarm_minute = alarm_minute
-        self.offset = self.sub_time(self, offset_minute)
 
-    def sub_time(self, offset_minute):
-        new_hour = self.alarm_hour
-        if (self.alarm_minute - self.offset) < 0:
-            new_hour -= (self.offset // 60)
+        def sub_time(self, offset_minute):
+            new_hour = self.alarm_hour
+            new_minute = self.alarm_minute
+            if (self.alarm_minute - offset_minute) < 0:
+                new_hour = new_hour - (offset_minute // 60)
+                new_minute = new_minute - self.alarm_minute - (offset_minute // 60)
+
+            return new_hour, new_minute
+
+        self.offset = sub_time(self, offset_minute)
 
 
-monday = Day("monday", 6, 30, 30)
+monday = Day("monday", 6, 30, 40)
 print("The alarm on " + monday.day + " is at " + str(monday.alarm_hour) + ":" + str(monday.alarm_minute) + " O' clock.")
+
+print(monday.offset)
