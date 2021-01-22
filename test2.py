@@ -1,5 +1,8 @@
 import pigpio
 import time
+from subprocess import call
+
+call("sudo pigpiod", shell=True)
 pi = pigpio.pi()
 
 RED = 17
