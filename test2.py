@@ -8,7 +8,7 @@ BLUE = 24
 
 def led_off():
     led_set(0,0,0)
-    print("Strip slått av")
+    print("Strip slatt av")
 
 def led_set(r, g, b):
     pi.set_PWM_dutycycle(RED, r)
