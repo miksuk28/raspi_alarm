@@ -10,8 +10,8 @@ config.read("config.ini")
 class Today:
     def __init__(self):
         self.day = weekdays[date.weekday()]
-        self.alarm_state =  config[self.day]["alarm_state"]
-        self.alarm_hour =   config[self.day]["alarm_hour"]
+        self.alarm_state  = config[self.day]["alarm_state"]
+        self.alarm_hour   = config[self.day]["alarm_hour"]
         self.alarm_minute = config[self.day]["alarm_minute"]
 
 today = Today()
