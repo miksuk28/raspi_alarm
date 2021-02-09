@@ -53,4 +53,5 @@ def main():
     if check_button():
         pass
 
+# will reload if broken out of loop
 main()
