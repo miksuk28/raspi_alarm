@@ -13,24 +13,19 @@ running = True
 def check_button():
     return True
 
-class Clock:
-    def __init__(self):
-        self.h = int(datetime.now().strftime("%H"))
-        self.m = int(datetime.now().strftime("%M"))
-        print(self.h, self.m)
-
-clock = Clock()
+def calcmins(hours, mins):
+    '''calculates hours and minutes to total minutes'''
+    return (hours * 60) + mins
 
 # køyr i anna thread
 def timer():
-    global timer
+    global mins
     while True:
-        timer = 0
-        for x in range(60):
-            # print(timer)
-            timer += 1
-            clock.__init__()
-            sleep(1)
+        hr = int(datetime.now().strftime("%H"))
+        min = int(datetime.now().strftime("%M"))
+        mins = calcmins(hr, min)
+        print(mins)
+        sleep(1)
 
 timer_thread = threading.Thread(target = timer)
 timer_thread.start()
@@ -42,9 +37,9 @@ class NextAlarm:
             pass
 
         self.day = weekdays[datetime.now().weekday()]
-        self.alarm_state  = str(config[self.day]["alarm_state"])
-        self.alarm_hour   = str(config[self.day]["alarm_hour"])
-        self.alarm_minute = str(config[self.day]["alarm_minute"])
+        self.offset = int(config["PREF"]["offset"])
+        self.alarm_state = bool(config[self.day]["alarm_state"])
+        self.alarm = calcmins(config[self.day]["alarm_hour"], config[self.day]["alarm_minute"])
 
 alarm = NextAlarm()
 
