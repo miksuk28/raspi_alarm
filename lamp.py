@@ -2,6 +2,13 @@ from time import *
 from datetime import *
 import threading
 import configparser
+import pigpio
+
+pi = pigpio.pi()
+R = 17
+G = 22
+B = 24
+BTN = 27
 
 weekdays = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
