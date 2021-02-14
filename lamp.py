@@ -25,7 +25,7 @@ def calcmins(hours, mins):
     '''calculates hours and minutes to total minutes'''
     return (hours * 60) + mins
 
-# køyr i anna thread
+# koyr i anna thread
 def timer():
     global mins
     while True:
