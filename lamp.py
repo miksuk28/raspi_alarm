@@ -5,6 +5,7 @@ import configparser
 import pigpio
 
 pi = pigpio.pi()
+
 R = 17
 G = 22
 B = 24
@@ -18,7 +19,7 @@ running = True
 
 # testing
 def check_button():
-    return True
+    return pi.read(BTN)
 
 def calcmins(hours, mins):
     '''calculates hours and minutes to total minutes'''
@@ -40,13 +41,19 @@ timer_thread.start()
 class NextAlarm:
     def __init__(self):
         day = weekdays[datetime.now().weekday()]
-        if int(config[day]["alarm_state"]):
-            pass
+        day_num = datetime.now().weekday()
+        '''
+        while True:
+            if day_num > 6:
+                break
+            if int(config[day]["alarm_state"]):
+                self.day = weekdays[day_num]
+        '''
 
-        self.day = weekdays[datetime.now().weekday()]
         self.offset = int(config["PREF"]["offset"])
         self.alarm_state = bool(config[self.day]["alarm_state"])
         self.alarm = calcmins(config[self.day]["alarm_hour"], config[self.day]["alarm_minute"])
+        self.alarm_start = self.alarm - self.offset
 
 alarm = NextAlarm()
 
