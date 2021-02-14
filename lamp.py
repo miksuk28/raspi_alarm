@@ -1,10 +1,12 @@
+debug = True
+
 from time import *
 from datetime import *
 import threading
 import configparser
-import pigpio
+if not debug: import pigpio
 
-pi = pigpio.pi()
+if not debug: pi = pigpio.pi()
 
 R = 17
 G = 22
@@ -19,7 +21,10 @@ running = True
 
 # testing
 def check_button():
-    return pi.read(BTN)
+    if not debug:
+        return pi.read(BTN)
+    else:
+        return True
 
 def calcmins(hours, mins):
     '''calculates hours and minutes to total minutes'''
@@ -51,19 +56,25 @@ class NextAlarm:
                 break
             else:
                 day_num += 1
+                print(day_num)
 
 
         self.offset = int(config["PREF"]["offset"])
         self.alarm_state = bool(config[self.day]["alarm_state"])
-        self.alarm = calcmins(config[self.day]["alarm_hour"], config[self.day]["alarm_minute"])
+        self.alarm = calcmins(int(config[self.day]["alarm_hour"]), int(config[self.day]["alarm_minute"]))
         self.alarm_start = self.alarm - self.offset
 
 alarm = NextAlarm()
 
+def fade():
+    r = 
+
 def main():
     config.read("config.ini")
     if check_button():
-        pass
+        if alarm.alarm_state:
+            if mins >= alarm.alarm_start:
+                
 
 # will reload if broken out of loop
 main()
