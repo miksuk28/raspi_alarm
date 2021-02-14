@@ -42,13 +42,16 @@ class NextAlarm:
     def __init__(self):
         day = weekdays[datetime.now().weekday()]
         day_num = datetime.now().weekday()
-        '''
+
         while True:
             if day_num > 6:
                 break
-            if int(config[day]["alarm_state"]):
+            if int(config[weekdays[day_num]]["alarm_state"]):
                 self.day = weekdays[day_num]
-        '''
+                break
+            else:
+                day_num += 1
+
 
         self.offset = int(config["PREF"]["offset"])
         self.alarm_state = bool(config[self.day]["alarm_state"])
