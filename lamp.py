@@ -2,7 +2,7 @@ import pigpio
 from subprocess import call
 from time import *
 from datetime import *
-import threading
+from threading import Thread
 import configparser
 
 call("sudo pigpiod", shell=True)
@@ -44,7 +44,7 @@ def timer():
         print(time_mins)
         sleep(1)
 
-timer_thread = threading.Thread(target = timer)
+timer_thread = Thread(target = timer())
 timer_thread.start()
 
 def get_alarm_mins(day):
@@ -101,12 +101,12 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
 def fade_off():
     pass
 
-def main():
+while True:
     config.read("config.ini")
     if check_button():
         led_off()
         if alarm.alarm_state:
-            pass
+            break
 
 # will reload if broken out of loop
 main()
