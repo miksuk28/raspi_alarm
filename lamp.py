@@ -21,7 +21,7 @@ running = True
 
 # testing
 def check_button():
-    if pi.read(BTN) == 1:
+    if pi.read(BTN) != 0:
         return True
     else:
         return False
