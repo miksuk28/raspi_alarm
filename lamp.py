@@ -97,6 +97,7 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
     for i in range(steps):
         led_set((r1 - (r_ * i)), (g1 - (g_ * i)), (b1 - (b_ * i)))
 
+# fades off
 def fade_off():
     interpolate()
 
