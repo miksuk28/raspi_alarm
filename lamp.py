@@ -99,12 +99,12 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
 
 # fades off
 def fade_off():
-    interpolate()
+    pass
 
 def main():
     config.read("config.ini")
     if check_button():
-        fade_off()
+        led_off()
         if alarm.alarm_state:
             pass
 
