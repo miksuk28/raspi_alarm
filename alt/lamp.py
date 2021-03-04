@@ -51,11 +51,15 @@ def update_alarm():
     global alarms
     global settings
     alarms = []
+    settigns = []
     day = datetime.now().weekday()
 
     settings = [
         {"lamp_mode" : {"red" : int(config["LAMP_MODE"]["RED"]), "green" : int(config["LAMP_MODE"]["GREEN"]), "blue" : int(config["LAMP_MODE"]["BLUE"])}},
         {"pref" : {"red" : int(config["PREF"]["RED"]), "green" : int(config["PREF"]["GREEN"]), "blue" : int(config["PREF"]["BLUE"])}}
+    ]
+    alarms = [
+        
     ]
 
 update_alarm()
