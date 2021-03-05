@@ -37,16 +37,9 @@ class Alarm:
         self.minute = minute
         self.mins = calc_mins(hour, minute)
 
-'''
 def update_alarm():
-    day = datetime.now().weekday()
-    if bool(config[weekdays[day]]["alarm_state"]):
-        weekday = weekdays[day]
-        alarm = Alarm(weekday, int(config[weekday]["alarm_hour"]), int(config[weekday["alarm_minute"]]))
-    else:
-'''
+    config.read("config.ini")
 
-def update_alarm():
     # sletter alt innholder i lista
     global alarms
     global settings
@@ -61,7 +54,6 @@ def update_alarm():
     # alarms = [{"day" : "Monday", "alarm_state" : True, "alarm_hour" : 6, "alarm_minute" : 10}]
 
     for i in range(day, 7):
-        print(i)
         if config[weekdays[i]]["alarm_state"] == "1":
             mins = calc_mins(int(config[weekdays[i]]["alarm_hour"]), int(config[weekdays[i]]["alarm_minute"]))
             alarm_day = {"day" : weekdays[i], "alarm_state" : True, "alarm_hour" : int(config[weekdays[i]]["alarm_hour"]), "alarm_minute" : int(config[weekdays[i]]["alarm_minute"]), "mins" : mins, "mins_offset" : mins - settings[1]["pref"]["offset"]}

@@ -1,12 +1,16 @@
-import pigpio
-from subprocess import call
+debug = True
+
 from time import *
 from datetime import *
 from threading import Thread
 import configparser
 
-call("sudo pigpiod", shell=True)
-pi = pigpio.pi()
+if not debug:
+    import pigpio
+    from subprocess import call
+
+    call("sudo pigpiod", shell=True)
+    pi = pigpio.pi()
 
 R = 17
 G = 22
@@ -47,34 +51,31 @@ def timer():
 timer_thread = Thread(target = timer())
 timer_thread.start()
 
-def get_alarm_mins(day):
-    day_name = weekdays[day]
-
-    minutes = int(config[day_name]["alarm_minute"])
-    hours = int(config[day_name]["alarm_hour"])
-
+def calc_mins(hours, minutes):
     return (hours * 60) + minutes
 
-class NextAlarm:
-    def __init__(self):
-        day = datetime.now().weekday()
-        count = 0
-        while True:
-            if count > 6:
-                break
-            elif bool(config[weekdays[day]]["alarm_state"]) and get_alarm_mins(day) > time_mins:
-                self.day = weekdays[day]
-                self.day_num = day
-                break
-            else:
-                day += 1
-                count += 1
+def update_alarm():
+    config.read("config.ini")
 
-        self.alarm_state  = str(config[self.day]["alarm_state"])
-        self.alarm_hour   = str(config[self.day]["alarm_hour"])
-        self.alarm_minute = str(config[self.day]["alarm_minute"])
+    # sletter alt innholder i lista
+    global alarms
+    global settings
+    alarms = []
+    settings = []
+    day = datetime.now().weekday()
 
-alarm = NextAlarm()
+    settings = [
+        {"lamp_mode" : {"red" : int(config["LAMP_MODE"]["RED"]), "green" : int(config["LAMP_MODE"]["GREEN"]), "blue" : int(config["LAMP_MODE"]["BLUE"])}},
+        {"pref" : {"red" : int(config["PREF"]["RED"]), "green" : int(config["PREF"]["GREEN"]), "blue" : int(config["PREF"]["BLUE"]), "offset" : int(config["PREF"]["offset"])}}
+    ]
+    # alarms = [{"day" : "Monday", "alarm_state" : True, "alarm_hour" : 6, "alarm_minute" : 10}]
+
+    for i in range(day, 7):
+        if config[weekdays[i]]["alarm_state"] == "1":
+            mins = calc_mins(int(config[weekdays[i]]["alarm_hour"]), int(config[weekdays[i]]["alarm_minute"]))
+            alarm_day = {"day" : weekdays[i], "alarm_state" : True, "alarm_hour" : int(config[weekdays[i]]["alarm_hour"]), "alarm_minute" : int(config[weekdays[i]]["alarm_minute"]), "mins" : mins, "mins_offset" : mins - settings[1]["pref"]["offset"]}
+            alarms.append(alarm_day)
+
 
 def led_set(r, g, b):
     global red, green, blue
@@ -101,12 +102,3 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
 def fade_off():
     pass
 
-while True:
-    config.read("config.ini")
-    if check_button():
-        led_off()
-        if alarm.alarm_state:
-            break
-
-# will reload if broken out of loop
-main()
