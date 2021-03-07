@@ -121,3 +121,10 @@ print(alarms)
 
 boot_animation()
 print("gaming")
+
+print(settings[0]["red"], settings[0]["green"], settings[0]["blue"])
+
+while True:
+    led_set(255,255,255)
+    if check_button():
+        led_off()
