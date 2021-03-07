@@ -119,7 +119,7 @@ update_alarm()
 print(settings)
 print(alarms)
 
-boot_animation()
+# boot_animation()
 print("gaming")
 
 print(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
@@ -127,5 +127,4 @@ print(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settin
 while True:
     led_set(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
     if check_button():
-        led_off()
-        sleep(1)
+        print("gaming")
