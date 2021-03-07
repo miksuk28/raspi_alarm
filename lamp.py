@@ -125,7 +125,7 @@ print("gaming")
 print(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
 
 while True:
-    led_set(255,255,255)
+    led_set(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
     if check_button():
         led_off()
         sleep(1)
