@@ -79,7 +79,9 @@ def update_alarm():
 
 def led_set(r, g, b):
     global red, green, blue
-    red = r, blue = b, green = g
+    red = r
+    blue = b
+    green = g
 
     pi.set_PWM_dutycycle(R, r)
     pi.set_PWM_dutycycle(G, g)
