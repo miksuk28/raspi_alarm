@@ -128,3 +128,4 @@ while True:
     led_set(255,255,255)
     if check_button():
         led_off()
+        sleep(1)
