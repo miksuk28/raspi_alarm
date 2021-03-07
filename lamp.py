@@ -48,7 +48,7 @@ def timer():
         print(time_mins)
         sleep(1)
 
-timer_thread = Thread(target = timer())
+timer_thread = Thread(target = timer)
 timer_thread.start()
 
 def calc_mins(hours, minutes):
@@ -102,3 +102,8 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
 def fade_off():
     pass
 
+update_alarm()
+print(settings)
+print(alarms)
+
+print("gaming")
