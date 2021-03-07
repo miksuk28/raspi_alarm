@@ -102,8 +102,20 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps, pause):
 def fade_off():
     pass
 
+def boot_animation():
+    led_off()
+    p = 0.005 # pause
+    for i in range(2):
+        for i in range(255):
+            led_set(0, i, 0)
+            time.sleep(p)
+        for i in range(255, 0, -1):
+            led_set(0, i, 0)
+            time.sleep(p)
+
 update_alarm()
 print(settings)
 print(alarms)
 
+boot_animation()
 print("gaming")
