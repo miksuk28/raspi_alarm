@@ -122,7 +122,7 @@ print(alarms)
 boot_animation()
 print("gaming")
 
-print(settings[0]["red"], settings[0]["green"], settings[0]["blue"])
+print(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
 
 while True:
     led_set(255,255,255)
