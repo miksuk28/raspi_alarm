@@ -38,7 +38,7 @@ class Clock:
 
 clock = Clock()
 
-# køyr i anna thread
+# koyr i anna thread
 def timer():
     global time_mins
     while True:
