@@ -1,4 +1,4 @@
-debug = True
+debug = False
 
 from time import *
 from datetime import *
