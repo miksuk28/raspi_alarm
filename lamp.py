@@ -110,10 +110,10 @@ def boot_animation():
     for i in range(2):
         for i in range(255):
             led_set(0, i, 0)
-            time.sleep(p)
+            sleep(p)
         for i in range(255, 0, -1):
             led_set(0, i, 0)
-            time.sleep(p)
+            sleep(p)
 
 update_alarm()
 print(settings)
