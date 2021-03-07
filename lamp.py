@@ -106,7 +106,7 @@ def fade_off():
 
 def boot_animation():
     led_off()
-    p = 0.005 # pause
+    p = 0.0005 # pause
     for i in range(2):
         for i in range(255):
             led_set(0, i, 0)
