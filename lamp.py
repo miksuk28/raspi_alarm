@@ -69,7 +69,8 @@ def update_alarm():
         {"pref" : {"red" : int(config["PREF"]["RED"]), "green" : int(config["PREF"]["GREEN"]), "blue" : int(config["PREF"]["BLUE"]), "offset" : int(config["PREF"]["offset"])}}
     ]
     # alarms = [{"day" : "Monday", "alarm_state" : True, "alarm_hour" : 6, "alarm_minute" : 10}]
-
+    
+    # sjekker berre tom. sondag. Legg til unntak for sondag-mandag
     for i in range(day, 7):
         if config[weekdays[i]]["alarm_state"] == "1":
             mins = calc_mins(int(config[weekdays[i]]["alarm_hour"]), int(config[weekdays[i]]["alarm_minute"]))
