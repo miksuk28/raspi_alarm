@@ -1,3 +1,4 @@
+# coding=utf-8
 # debug modus for testing
 debug = False
 
@@ -27,14 +28,14 @@ weekdays = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-# sjekker om knapp er på når kalla: returnerer bool (om pin 27 ikkje les 0)
+# sjekker om knapp er på nar kalla: returnerer bool (om pin 27 ikkje les 0)
 def check_button():
     if pi.read(BTN) != 0:
         return True
     else:
         return False
 
-# simpelt klokkeobjekt: ikkje så veldig nyttig, bør kanskje fjernast
+# simpelt klokkeobjekt: ikkje sa veldig nyttig, bor kanskje fjernast
 class Clock:
     def __init__(self):
         self.h = int(datetime.now().strftime("%H"))
