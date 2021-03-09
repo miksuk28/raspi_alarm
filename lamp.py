@@ -1,6 +1,6 @@
 # coding=utf-8
 # debug modus for testing
-debug = True
+debug = False
 
 from subprocess import call
 from time import *              # sleep() for å kunne vente
