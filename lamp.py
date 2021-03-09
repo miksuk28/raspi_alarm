@@ -2,7 +2,7 @@
 # debug modus for testing
 debug = True
 
-from subprocess import run
+from subprocess import call
 from time import *              # sleep() for å kunne vente
 from datetime import *          # handtering av dagar og klokkeslett
 from threading import Thread    # threading, for å kunne ha ein timar som køyrer parallellt i bakgrunnen
