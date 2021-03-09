@@ -171,4 +171,4 @@ while True:
 
 for i in range(255):
     led_set(i,i,i)
-    sleep(60)
+    sleep(1)
