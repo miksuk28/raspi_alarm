@@ -116,12 +116,11 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
     g_ = (g2 - g1) / steps
     b_ = (b2 - b1) / steps
     
-    finished = False
     last_time = 0
     for i in range(steps):
         led_set((r1 - (r_ * i)), (g1 - (g_ * i)), (b1 - (b_ * i)))
         
-        while True:
+        while False:
             if (runtime - last_time) == 10:
                 last_time = runtime
                 print("bruh")
