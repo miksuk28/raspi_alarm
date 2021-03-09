@@ -104,7 +104,7 @@ def led_set(r, g, b):
     pi.set_PWM_dutycycle(G, g)
     pi.set_PWM_dutycycle(B, b)
 
-    if debug: print(r, g, b)
+    print(r, g, b)
 
 # slår av leds
 def led_off():
@@ -119,13 +119,13 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
     last_time = 0
     print(r_, g_, b_)
     for i in range(steps):
-        led_set((r1 - (r_ * i)), (g1 - (g_ * i)), (b1 - (b_ * i)))
+        led_set(r_ * i, g_ * i, b_ * i)
         
+        current_mins = time_mins
         while True:
-            if (runtime - last_time) == 10:
-                last_time = runtime
-                print("bruh")
+            if current_mins != time_mins:
                 break
+            sleep(0.001)
 
 # fades off
 def fade_off():
@@ -158,8 +158,7 @@ while True:
     led_set(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["green"], settings[0]["lamp_mode"]["blue"])
     if check_button():
         print("gaming")
-'''
-'''
+
 last_time = 0
 while True:
 
@@ -167,8 +166,4 @@ while True:
         last_time = runtime
         print("bruh")
     '''
-# interpolate(0,0,0,255,255,255,30)
-
-for i in range(255):
-    led_set(i,i,i)
-    sleep(1)
+interpolate(0,0,0,255,255,255,30)
