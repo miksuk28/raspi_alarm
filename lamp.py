@@ -119,6 +119,8 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
     last_time = 0
     print(r_, g_, b_)
     for i in range(steps):
+        if exit_loop:
+            break
         led_set(r_ * i, g_ * i, b_ * i)
         
         current_mins = time_mins
@@ -126,6 +128,9 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
             if current_mins != time_mins:
                 break
             sleep(0.001)
+            if not check_button():
+                exit_loop = True
+                break
 
 # fades off
 def fade_off():
