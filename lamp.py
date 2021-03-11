@@ -131,6 +131,7 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
             sleep(0.001)
             if not check_button():
                 exit_loop = True
+                led_off()
                 break
 
 # fades off
