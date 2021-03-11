@@ -133,6 +133,7 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
                 exit_loop = True
                 led_off()
                 break
+    print("interpolation loop finished")
 
 # fades off
 def fade_off():
