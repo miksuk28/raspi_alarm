@@ -183,7 +183,6 @@ while True:
         last_time = runtime
         print("bruh")
 '''
-interpolate(0,0,0,255,255,255,30)
 
 while True:
     led_set(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["blue"], settings[0]["lamp_mode"]["green"])
