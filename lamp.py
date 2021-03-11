@@ -108,15 +108,7 @@ def led_set(r, g, b):
 
 # slår av leds
 def led_off():
-    steps = 60
-    r_ = (0 - red) / steps
-    g_ = (0 - green) / steps
-    b_ = (0 - blue) / steps
-    
-    r = red, g = green, b = blue
-    for i in range(steps):
-        led_set(r - (r_ * i), g - (g_ * i), b - (b_ * i))
-        sleep(0.01)
+    led_set(0,0,0)
 
 # linær interpolasjon for fading mellom to verdiar, funkar sikkert ikkje enda
 def interpolate(r1, g1, b1, r2, g2, b2, steps):
@@ -145,7 +137,15 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
 
 # fades off
 def fade_off():
+    steps = 60
+    r_ = (0 - red) / steps
+    g_ = (0 - green) / steps
+    b_ = (0 - blue) / steps
     
+    r = red, g = green, b = blue
+    for i in range(steps):
+        led_set(r - (r_ * i), g - (g_ * i), b - (b_ * i))
+        sleep(0.01)
 
 # potensiell boot-animasjon
 def boot_animation():
