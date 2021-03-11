@@ -119,10 +119,11 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
     
     last_time = 0
     print(r_, g_, b_)
+    red2 = red, gree2 = green, blue2 = blue
     for i in range(steps):
         if exit_loop:
             break
-        led_set(r_ * i, g_ * i, b_ * i)
+        led_set(red2 - (r_ * i), green2 - (g_* i), blue2 - (b_* i))
         
         current_mins = time_mins
         while True:
