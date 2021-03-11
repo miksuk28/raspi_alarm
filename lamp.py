@@ -119,7 +119,8 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
     
     last_time = 0
     print(r_, g_, b_)
-    red2 = red, gree2 = green, blue2 = blue
+    red2 = red, green2 = green, blue2 = blue
+    print(red2, green2, blue2)
     for i in range(steps):
         if exit_loop:
             break
