@@ -182,9 +182,15 @@ while True:
     if (runtime - last_time) == 10:
         last_time = runtime
         print("bruh")
-    '''
+'''
 interpolate(0,0,0,255,255,255,30)
 
 while True:
+    led_set(settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["blue"], settings[0]["lamp_mode"]["green"])
     if check_button():
-        fade_off()
+        led_off()
+        while not alarms:
+            if alarms or not check_button(): break
+        if alarms:
+            led_off()
+            interpolate(0, 0, 0, settings[0]["lamp_mode"]["red"], settings[0]["lamp_mode"]["blue"], settings[0]["lamp_mode"]["green"], 30)
