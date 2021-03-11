@@ -182,9 +182,9 @@ while True:
         last_time = runtime
         print("bruh")
     '''
-#led_set(255,255,255)
-#fade_off()
-interpolate(0,0,0,255,255,255,30)
+led_set(255,255,255)
+fade_off()
+#interpolate(0,0,0,255,255,255,30)
 
 while True:
     if check_button():
