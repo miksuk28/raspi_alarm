@@ -137,6 +137,7 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
 
 # fades off
 def fade_off():
+    global red, blue, green
     steps = 60
     r_ = (0 - red) / steps
     g_ = (0 - green) / steps
