@@ -139,14 +139,13 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
 def fade_off():
     global red, blue, green
     steps = 60
-    r_ = (0 - red) / steps
+    r_ = (0 - red)    / steps
     g_ = (0 - green) / steps
     b_ = (0 - blue) / steps
     
-    print("values now")
-    print(red, blue, green)
+
     for i in range(60):
-        led_set(red - (r_*i*-1), green - (g_*i*-1), blue - (b_*i*-1))
+        led_set(red - (r_*i), green - (g_*i), blue - (b_*i))
         sleep(0.001)
 
 # potensiell boot-animasjon
@@ -184,9 +183,7 @@ while True:
         last_time = runtime
         print("bruh")
     '''
-led_set(255,255,255)
-fade_off()
-#interpolate(0,0,0,255,255,255,30)
+interpolate(0,0,0,255,255,255,30)
 
 while True:
     if check_button():
