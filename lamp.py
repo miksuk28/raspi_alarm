@@ -144,9 +144,7 @@ def fade_off():
     b_ = (0 - blue) / steps
     
     for i in range(60):
-        print(r_, g_, b_)
-        led_set(r_ * i, g_ * i, b_ * i)
-        sleep(0.01)
+        print("gaming")
 
 # potensiell boot-animasjon
 def boot_animation():
@@ -183,9 +181,9 @@ while True:
         last_time = runtime
         print("bruh")
     '''
-#led_set(255,255,255)
-#fade_off()
-interpolate(0,0,0,255,255,255,30)
+led_set(255,255,255)
+fade_off()
+#interpolate(0,0,0,255,255,255,30)
 
 while True:
     if check_button():
