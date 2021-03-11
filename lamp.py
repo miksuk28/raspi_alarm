@@ -144,8 +144,8 @@ def fade_off():
     b_ = (0 - blue) / steps
     
     r = red, g = green, b = blue
-    for i in range(0, steps):
-        led_set(r - (r_ * i), g - (g_ * i), b - (b_ * i))
+    for i in range(steps, 0, -1):
+        led_set(r_ * i, g_ * i, b_ * i)
         sleep(0.01)
 
 # potensiell boot-animasjon
