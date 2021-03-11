@@ -112,6 +112,7 @@ def led_off():
 
 # linær interpolasjon for fading mellom to verdiar, funkar sikkert ikkje enda
 def interpolate(r1, g1, b1, r2, g2, b2, steps):
+    exit_loop = False
     r_ = (r2 - r1) / steps
     g_ = (g2 - g1) / steps
     b_ = (b2 - b1) / steps
