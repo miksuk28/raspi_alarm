@@ -175,3 +175,7 @@ while True:
         print("bruh")
     '''
 interpolate(0,0,0,255,255,255,30)
+
+while True:
+    if alarms and check_button():
+        print("there is an alarm and the button is pressed")
