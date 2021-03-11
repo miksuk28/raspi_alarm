@@ -146,7 +146,7 @@ def fade_off():
     print("values now")
     print(red, blue, green)
     for i in range(60):
-        led_set(red - (r_*i), green - (g_*i), blue - (b_*i))
+        led_set(red - (r_*i*-1), green - (g_*i*-1), blue - (b_*i*-1))
         sleep(0.001)
 
 # potensiell boot-animasjon
