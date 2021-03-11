@@ -108,7 +108,15 @@ def led_set(r, g, b):
 
 # slår av leds
 def led_off():
-    led_set(0,0,0)
+    steps = 60
+    r_ = (0 - red) / steps
+    g_ = (0 - green) / steps
+    b_ = (0 - blue) / steps
+    
+    r = red, g = green, b = blue
+    for i in range(steps):
+        led_set(r - (r_ * i), g - (g_ * i), b - (b_ * i))
+        sleep(0.01)
 
 # linær interpolasjon for fading mellom to verdiar, funkar sikkert ikkje enda
 def interpolate(r1, g1, b1, r2, g2, b2, steps):
@@ -137,7 +145,7 @@ def interpolate(r1, g1, b1, r2, g2, b2, steps):
 
 # fades off
 def fade_off():
-    pass
+    
 
 # potensiell boot-animasjon
 def boot_animation():
@@ -174,8 +182,10 @@ while True:
         last_time = runtime
         print("bruh")
     '''
-interpolate(0,0,0,255,255,255,30)
+led_set(255,255,255)
+fade_off()
+#interpolate(0,0,0,255,255,255,30)
 
 while True:
-    if alarms and check_button():
-        print("there is an alarm and the button is pressed")
+    if check_button():
+        fade_off()
