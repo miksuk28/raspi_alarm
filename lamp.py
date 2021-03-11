@@ -143,7 +143,6 @@ def fade_off():
     g_ = (0 - green) / steps
     b_ = (0 - blue) / steps
     
-    r = red, g = green, b = blue
     for i in range(60, 0, -1):
         led_set(r_ * i, g_ * i, b_ * i)
         sleep(0.01)
